@@ -32,7 +32,7 @@ public class DefaultSmppClientHandler extends DefaultSmppClient implements SmppC
         this.scheduler = monitorExecutor;
         this.logger = logger;
         this.expectedSessions = expectedSessions;
-        this.sessions = new LinkedList<SmppSession>();
+        this.sessions = new LinkedList<>();
     }
 
     public void setReconnectDelay(Integer delay) {

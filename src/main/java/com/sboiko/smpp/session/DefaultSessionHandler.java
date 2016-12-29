@@ -48,7 +48,7 @@ public class DefaultSessionHandler extends DefaultSmppSessionHandler {
 
     public boolean send(Msg msg) {
         logger.info("Send message");
-        if (isReady()) {
+        if (isReady() && session.isBound()) {
             try {
                 PduRequest pdu = toPdu(msg);
                 pdu.setReferenceObject(msg);

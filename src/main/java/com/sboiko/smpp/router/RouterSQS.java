@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class Router implements AbstractRouter {
+public class RouterSQS implements AbstractRouter {
 
     private final ArrayList<DefaultSessionHandler> sessions;
     private long counter = 0;
@@ -29,11 +29,11 @@ public class Router implements AbstractRouter {
     private AtomicBoolean running = new AtomicBoolean(false);
     private Integer pollingInterval = 0;
 
-    public Router(ThreadPoolExecutor executor, Logger logger) {
+    public RouterSQS(ThreadPoolExecutor executor, Logger logger) {
         Region usWest = Region.getRegion(Regions.US_WEST_2);
         CreateQueueRequest createQueueRequest = new CreateQueueRequest("SmppQueue");
         this.logger = logger;
-        sessions = new ArrayList<DefaultSessionHandler>();
+        sessions = new ArrayList<>();
         try {
             credentials = new ProfileCredentialsProvider().getCredentials();
         } catch (Exception e) {
